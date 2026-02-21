@@ -4,10 +4,11 @@ import foto3 from "../assets/no3.webp";
 import foto4 from "../assets/no4.webp";
 import foto5 from "../assets/no5.webp";
 import foto6 from "../assets/no6.webp";
-import foto7 from "../assets/no7.webp"
-import foto8 from "../assets/no8.webp"
-import foto9 from "../assets/no9.webp"
-import foto10 from "../assets/no10.webp"
+import foto7 from "../assets/no7.webp";
+import foto8 from "../assets/no8.webp";
+import foto9 from "../assets/no9.webp";
+import foto10 from "../assets/no10.webp";
+import foto11 from "../assets/no11.webp"
 
 const slidesData = [
   {
@@ -64,7 +65,12 @@ const slidesData = [
     src: foto10,
     text: "sejak dulu dia suka dan sayang sekali dengan kucing",
   },
-
+  {
+    id: 10,
+    type: "image",
+    src: foto11,
+    text: "setelah beberapa lama dia harus berpindah ke jakarta karena mengikuti dinas papahnya",
+  },
   {
     id: 100,
     type: "text_only",
