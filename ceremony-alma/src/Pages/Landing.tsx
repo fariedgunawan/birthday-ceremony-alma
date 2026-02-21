@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import foto12 from "../assets/no1dan2.webp";
+import foto1dan2 from "../assets/no1dan2.webp";
 import foto3 from "../assets/no3.webp";
 import foto4 from "../assets/no4.webp";
 import foto5 from "../assets/no5.webp";
@@ -8,13 +8,19 @@ import foto7 from "../assets/no7.webp";
 import foto8 from "../assets/no8.webp";
 import foto9 from "../assets/no9.webp";
 import foto10 from "../assets/no10.webp";
-import foto11 from "../assets/no11.webp"
+import foto11 from "../assets/no11.webp";
+import foto12 from "../assets/no12.webp";
+import foto13 from "../assets/no13.webp";
+import foto14 from "../assets/no14.webp";
+import foto15 from "../assets/no15.webp";
+import foto16 from "../assets/no16.webp";
+
 
 const slidesData = [
   {
     id: 1,
     type: "image",
-    src: foto12,
+    src: foto1dan2,
     text: "Namanya Azizah Salma Ayunisa Purnomo Lahir pada tanggal 16 Maret 2004.",
   },
   {
@@ -70,6 +76,36 @@ const slidesData = [
     type: "image",
     src: foto11,
     text: "setelah beberapa lama dia harus berpindah ke jakarta karena mengikuti dinas papahnya",
+  },
+  {
+    id: 11,
+    type: "image",
+    src: foto12,
+    text: "setelah memilih beberapa universitas yang akan dijadikan bekal ilmu, dia ditakdirkan untuk berkuliah di telkom university bandung, dan disini lah dia mendapatkan banyak sekali pengalaman dalam hidupnya.",
+  },
+  {
+    id: 12,
+    type: "image",
+    src: foto13,
+    text: "dia sangat serius dan giat dalam menjalani perkuliahannya, sering kali belajar sampai begadang dan tidak bisa diganggu saat ingin ujian.",
+  },
+  {
+    id: 13,
+    type: "image",
+    src: foto14,
+    text: "cara dia melepas penat dari semua tugas dia adalah dia senang sekali bermain dengan teman2nya seperti jalan ke mall dan main ice skating",
+  },
+  {
+    id: 14,
+    type: "image",
+    src: foto15,
+    text: "seiring berjalannya waktu dia menemukan sesosok pria yang bagi dia pria ini berbeda dari pria pria lain yang biasa di temui olehnya, dan pada akhirnya dia berpacaran dengannya",
+  },
+  {
+    id: 15,
+    type: "image",
+    src: foto16,
+    text: "pacarnya sering kali mengajak jalan jalan bersama dan makan bersama",
   },
   {
     id: 100,
