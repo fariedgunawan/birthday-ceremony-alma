@@ -6,7 +6,7 @@ const Login = () => {
   const [error, setError] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [isCounting, setIsCounting] = useState(false);
-  const [countdown, setCountdown] = useState(10);
+  const [countdown, setCountdown] = useState(5);
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -19,7 +19,6 @@ const Login = () => {
     }
   }, []);
 
-  // Logika Hitung Mundur
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     if (isCounting && countdown > 0) {
@@ -68,7 +67,6 @@ const Login = () => {
 
     if (finalPassword === "160304") {
       setShowConfirm(true);
-      // Mainkan musik saat konfirmasi muncul
       if (audioRef.current) {
         audioRef.current
           .play()
@@ -89,8 +87,6 @@ const Login = () => {
 
   return (
     <div className="relative flex justify-center items-center min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-purple-100 p-4 font-sans overflow-hidden">
-      {/* File audio backsound (pastikan path file musik kamu benar) */}
-      <audio ref={audioRef} src="/backsound.mp3" loop preload="auto" />
 
       {/* Main Login Card */}
       <div
@@ -117,8 +113,9 @@ const Login = () => {
             Private Access
           </h2>
           <p className="text-gray-500 font-medium">
-            Masukkan kode rahasia kamu
+            Pastiin tombol lagu diatas kamu pencet dulu ya
           </p>
+        
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
@@ -156,7 +153,7 @@ const Login = () => {
             type="submit"
             className="w-full py-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white text-lg font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-purple-500/50"
           >
-            Buka Memori
+            Buka Ucapan
           </button>
         </form>
       </div>
@@ -189,7 +186,7 @@ const Login = () => {
                   Akses Terbuka!
                 </h3>
                 <p className="text-gray-500 mb-8">
-                  Apakah kamu sudah siap membaca memori ini?
+                  Apakah kamu sudah siap baca ucapan ini?
                 </p>
                 <button
                   onClick={handleConfirm}

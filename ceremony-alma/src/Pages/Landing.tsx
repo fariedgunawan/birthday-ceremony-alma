@@ -219,14 +219,18 @@ const Landing = () => {
   const [currentSlideIdx, setCurrentSlideIdx] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlideIdx((prevIdx) =>
-        prevIdx === slidesData.length - 1 ? 0 : prevIdx + 1,
-      );
-    }, 8000);
+  const interval = setInterval(() => {
+    setCurrentSlideIdx((prevIdx) => {
+      if (prevIdx === slidesData.length - 1) {
+        clearInterval(interval); 
+        return prevIdx;         
+      }
+      return prevIdx + 1;        
+    });
+  }, 8000);
 
-    return () => clearInterval(interval);
-  }, [slidesData]);
+  return () => clearInterval(interval);
+}, []); 
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-rose-100 via-pink-50 to-purple-100 overflow-hidden p-4 sm:p-8 font-sans">
@@ -247,20 +251,14 @@ const Landing = () => {
             >
               {slide.type === "image" && (
                 <React.Fragment>
-                  <div
-                    className={`relative mb-8 transition-all duration-[1200ms] ease-out transform ${
-                      isActive
-                        ? "opacity-100 translate-y-0 scale-100"
-                        : "opacity-0 -translate-y-12 scale-95"
-                    }`}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-tr from-pink-300 to-purple-300 rounded-3xl transform rotate-3 scale-[1.02] opacity-60 blur-sm"></div>
+                  
+                    
                     <img
                       src={slide.src}
                       alt="Memori Indah"
-                      className="relative w-auto max-w-[95%] sm:max-w-[85%] h-auto max-h-[45vh] sm:max-h-[50vh] object-cover rounded-3xl shadow-2xl ring-4 ring-white"
+                      className="max-w-[95%] sm:max-w-[85%] h-auto max-h-[45vh] mb-8 sm:max-h-[50vh] object-cover rounded-3xl shadow-2xl ring-4 ring-white"
                     />
-                  </div>
+                  
                   
                   <AnimatedText
                     text={slide.text}

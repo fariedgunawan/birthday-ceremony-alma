@@ -1,46 +1,40 @@
-import { useState, useRef } from "react";
+import { useRef, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./Pages/Landing";
 import Login from "./Pages/Login";
 
-import bgMusic from "../src/assets/song.mp3";
+import audio from "../src/assets/song2.mp3";
 
 function App() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef = useRef(new Audio(audio));
 
-  const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play().catch((err) => console.log("Autoplay dicegah", err));
-      }
-      setIsPlaying(!isPlaying);
-    }
+  useEffect(() => {
+    audioRef.current.loop = true;
+    audioRef.current.play();
+  }, []);
+
+  // Fungsi untuk mengembalikan state menjadi false saat lagu selesai
+  const handlePlayAudio = () => {
+    audioRef.current.play();
   };
 
   return (
     <div className="relative min-h-screen">
-      {/* File Audio Global */}
-      <audio ref={audioRef} src={bgMusic} loop preload="auto" />
-
-      <button
-        onClick={toggleMusic}
-        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[9999] w-12 h-12 flex items-center justify-center bg-white/40 backdrop-blur-md border border-white/50 rounded-full shadow-lg hover:bg-white/60 hover:scale-105 transition-all duration-300 group"
-        aria-label="Toggle Music"
-      >
-        {isPlaying ? (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-600 drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M15.536 8.464L12 5H9v14h3l3.536-3.464z" />
+      {/* Tambahkan z-50 agar tombol selalu di depan background Login/Landing */}
+      <div style={{ position: "fixed", top: 20, left: 20, zIndex: 9999 }}>
+        <button 
+          onClick={handlePlayAudio}
+          className="p-3 bg-white/50 backdrop-blur-md rounded-full shadow-lg hover:scale-110 transition-transform"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 text-pink-600">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"
+            />
           </svg>
-        ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500 group-hover:text-pink-500 drop-shadow-sm transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clipRule="evenodd" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-          </svg>
-        )}
-      </button>
+        </button>
+      </div>
 
       <Router>
         <Routes>
